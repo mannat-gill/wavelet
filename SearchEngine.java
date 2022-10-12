@@ -17,7 +17,8 @@ class Handler implements URLHandler {
             if (url.getPath().contains("/addCheckUp")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("Name")) {
-                    message += "\n" +parameters[1];
+                    message += "\n" + parameters[1]; 
+                    message += " hope you are doing well!";
                     return String.format(message);
                 }
             }
