@@ -10,7 +10,13 @@ class Handler implements URLHandler {
         } else if (url.getPath().equals("/addSmiley")) {
             message += " there :) ";
             return String.format(message);
-        } else {
+        } else if(url.getPath().equals("/remove")) {
+            if(message.length()>5){
+                message = message.substring(0, 5); 
+            }
+            return String.format(message);
+        }
+        else {
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/addCheckup")) {
                 String[] parameters = url.getQuery().split("=");
