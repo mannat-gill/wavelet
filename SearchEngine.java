@@ -4,9 +4,10 @@ import java.util.*;
 
 class Handler implements URLHandler {
     String message = "Hello";
-
+    String nameOutput= ""; 
+    List<String> names = new ArrayList<String>();
     public String handleRequest(URI url) {
-        ArrayList<String> names = new ArrayList<String>();
+        
         if (url.getPath().equals("/")) {
             return String.format(message);
         } else if (url.getPath().equals("/addSmiley")) {
@@ -27,12 +28,14 @@ class Handler implements URLHandler {
                     names.add(parameters[1]);
                     return "Added: "+ parameters[1];
                 }
-                if(parameters[0].equals("printFriends")){
-                     = " "; 
+                else if(parameters[0].equals("printFriends")){
+                    String outputFriends = ""; 
                     for(String x: names){
-                        message += x + " "; 
+                        if(x.contains(parameters[1])){
+                            outputFriends += x + " "; 
+                        }
                     }
-                    return message; 
+                    return outputFriends; 
                 }
             }
             
