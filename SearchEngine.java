@@ -22,13 +22,13 @@ class Handler implements URLHandler {
         else {
             
             System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/addCheckup")) {
+            if (url.getPath().contains("/addPerson")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("Name")) {
                     names.add(parameters[1]);
                     return "Added: "+ parameters[1];
                 }
-                else if(parameters[0].equals("printFriends")){
+                else if(parameters[0].equals("printPersons")){
                     String outputFriends = ""; 
                     for(String x: names){
                         if(x.contains(parameters[1])){
