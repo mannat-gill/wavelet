@@ -1,10 +1,12 @@
 import java.io.IOException;
 import java.net.URI;
+import java.util.*;
 
 class Handler implements URLHandler {
     String message = "Hello";
 
     public String handleRequest(URI url) {
+        ArrayList<String> names = new ArrayList<String>();
         if (url.getPath().equals("/")) {
             return String.format(message);
         } else if (url.getPath().equals("/addSmiley")) {
@@ -17,15 +19,24 @@ class Handler implements URLHandler {
             return String.format(message);
         }
         else {
+            
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/addCheckup")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("Name")) {
-                    message += "\n" + parameters[1];
-                    message += " hope you are doing well!";
-                    return String.format(message);
+                    names.add(parameters[1]);
+                    return "Added: "+ parameters[1];
+                }
+                if(parameters[0].equals("printFriends")){
+                     = " "; 
+                    for(String x: names){
+                        message += x + " "; 
+                    }
+                    return message; 
                 }
             }
+            
+
             return "Not Found!";
         }
     }
